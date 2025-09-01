@@ -1,5 +1,5 @@
 {
-  "name": "figment-mcp",
+  "name": "@figment/core",
   "version": "0.1.0",
   "description": "MCP server for brand-aware AI code generation",
   "type": "module",
@@ -23,26 +23,30 @@
       "types": "./dist/types.d.ts"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "start": "node dist/server.js",
     "test": "vitest",
     "lint": "eslint src/**/*.ts",
-    "format": "prettier --write src/**/*.ts"
+    "format": "prettier --write src/**/*.ts",
+    "prepublishOnly": "npm run build"
   },
   "keywords": ["mcp", "design-system", "ai", "brand-guide", "claude"],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@modelcontextprotocol/sdk": "^1.17.0",
     "cosmiconfig": "^9.0.0",
     "gray-matter": "^4.0.3"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
-    "typescript": "^5.7.0",
-    "tsup": "^8.3.0",
+    "typescript": "^5.5.4",
+    "tsup": "^8.0.1",
     "vitest": "^2.1.9"
   },
   "engines": {

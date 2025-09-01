@@ -2,36 +2,48 @@
   "name": "@figmentdev/figment",
   "version": "0.1.0",
   "description": "Brand-aware AI code generation CLI",
-  "type": "module", 
+  "type": "module",
   "bin": {
     "figment": "dist/cli.js"
   },
   "files": [
-    "dist/**/*"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoshuaPaul20/Figment.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/JoshuaPaul20/Figment#readme",
+  "bugs": {
+    "url": "https://github.com/JoshuaPaul20/Figment/issues"
+  },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup src --dts --format esm,cjs --out-dir dist",
+    "prepublishOnly": "npm run build",
     "dev": "tsup --watch",
-    "figment": "node dist/cli.js",
     "lint": "eslint src/**/*.ts",
     "test": "cd ../.. && node scripts/test-e2e.js"
   },
+  "license": "UNLICENSED",
   "dependencies": {
-    "commander": "^12.0.0", 
+    "commander": "^12.0.0",
     "inquirer": "^10.0.0",
     "chalk": "^5.3.0",
     "ora": "^8.0.0",
     "gray-matter": "^4.0.3",
-    "zod": "^3.22.0",
-    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8",
+    "@modelcontextprotocol/sdk": "^1.17.0",
     "cosmiconfig": "^9.0.0",
     "open": "^10.0.0",
-    "figment-mcp": "file:../core"
+    "@figment/core": "0.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
-    "@types/inquirer": "^9.0.0", 
-    "typescript": "^5.7.0",
-    "tsup": "^8.3.0"
+    "@types/inquirer": "^9.0.0",
+    "typescript": "^5.5.4",
+    "tsup": "^8.0.1"
   }
 }

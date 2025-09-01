@@ -71,3 +71,27 @@ playwright-report/
 # Project documentation
 figment.md
 GEMINI.md
+
+# Build artifacts that were accidentally tracked
+figment-variables.css
+
+# User-specific figment configurations (these are personal brand guides)
+.figment/
+*.figment-config.json
+
+# Temporary files and caches
+*.tmp
+*.temp
+.cache/
+
+# Package tarballs (created during npm pack)
+*.tgz
+*.tar.gz
+
+# Runtime configuration files (should be user-specific)
+.mcp.json
+claude_desktop_config.json
+
+# Editor-specific files
+.vscode/settings.json
+.idea/workspace.xml

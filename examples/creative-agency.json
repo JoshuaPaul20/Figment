@@ -1,0 +1,159 @@
+{
+  "name": "Creative Agency",
+  "version": "1.0.0", 
+  "description": "Bold, vibrant brand for creative agencies and design studios",
+  "colors": {
+    "primary": "#8B5CF6",
+    "secondary": "#EC4899",
+    "accent": "#F59E0B",
+    "success": "#10B981",
+    "warning": "#F59E0B", 
+    "error": "#EF4444",
+    "neutral": {
+      "50": "#FAFAFA",
+      "100": "#F5F5F5",
+      "200": "#EEEEEE", 
+      "300": "#E0E0E0",
+      "400": "#BDBDBD",
+      "500": "#9E9E9E",
+      "600": "#757575",
+      "700": "#424242",
+      "800": "#212121",
+      "900": "#121212"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "heading": "Poppins, system-ui, sans-serif",
+      "body": "Inter, system-ui, sans-serif", 
+      "mono": "JetBrains Mono, SF Mono, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace"
+    },
+    "fontSize": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "base": "1rem", 
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem",
+      "5xl": "3rem"
+    },
+    "fontWeight": {
+      "normal": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700,
+      "extrabold": 800
+    },
+    "lineHeight": {
+      "tight": 1.25,
+      "normal": 1.5, 
+      "relaxed": 1.75
+    }
+  },
+  "spacing": {
+    "base": 8,
+    "scale": [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128]
+  },
+  "borderRadius": {
+    "sm": "6px",
+    "md": "8px",
+    "lg": "12px", 
+    "xl": "16px",
+    "2xl": "24px",
+    "full": "9999px"
+  },
+  "shadows": {
+    "sm": "0 2px 4px 0 rgb(139 92 246 / 0.1)",
+    "md": "0 8px 16px 0 rgb(139 92 246 / 0.15)",
+    "lg": "0 16px 32px 0 rgb(139 92 246 / 0.2)"
+  },
+  "components": {
+    "button": {
+      "base": {
+        "borderRadius": "var(--border-radius-lg)",
+        "fontWeight": "var(--font-weight-semibold)",
+        "transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        "cursor": "pointer",
+        "border": "none",
+        "fontSize": "var(--font-size-base)",
+        "textTransform": "uppercase",
+        "letterSpacing": "0.025em"
+      },
+      "variants": {
+        "primary": {
+          "background": "linear-gradient(135deg, var(--color-primary), var(--color-secondary))",
+          "color": "white",
+          "padding": "var(--spacing-3) var(--spacing-6)",
+          "boxShadow": "var(--shadow-md)"
+        },
+        "secondary": {
+          "backgroundColor": "var(--color-secondary)",
+          "color": "white",
+          "padding": "var(--spacing-3) var(--spacing-6)",
+          "boxShadow": "var(--shadow-sm)"
+        },
+        "outline": {
+          "backgroundColor": "transparent",
+          "color": "var(--color-primary)",
+          "border": "2px solid var(--color-primary)",
+          "padding": "var(--spacing-3) var(--spacing-6)"
+        },
+        "ghost": {
+          "backgroundColor": "rgba(139, 92, 246, 0.1)",
+          "color": "var(--color-primary)",
+          "padding": "var(--spacing-3) var(--spacing-6)"
+        }
+      }
+    },
+    "input": {
+      "base": {
+        "borderRadius": "var(--border-radius-lg)",
+        "border": "2px solid var(--color-neutral-200)",
+        "padding": "var(--spacing-3) var(--spacing-4)",
+        "fontSize": "var(--font-size-base)",
+        "fontFamily": "var(--font-body)",
+        "transition": "all 0.3s ease",
+        "backgroundColor": "rgba(255, 255, 255, 0.9)"
+      },
+      "states": {
+        "default": {
+          "borderColor": "var(--color-neutral-200)"
+        },
+        "focus": {
+          "borderColor": "var(--color-primary)",
+          "boxShadow": "0 0 0 3px rgba(139, 92, 246, 0.1)"
+        },
+        "error": {
+          "borderColor": "var(--color-error)",
+          "boxShadow": "0 0 0 3px rgba(239, 68, 68, 0.1)"
+        }
+      }
+    },
+    "card": {
+      "base": {
+        "backgroundColor": "white",
+        "borderRadius": "var(--border-radius-2xl)",
+        "boxShadow": "var(--shadow-lg)",
+        "padding": "var(--spacing-8)",
+        "border": "1px solid rgba(255, 255, 255, 0.1)"
+      },
+      "variants": {
+        "gradient": {
+          "background": "linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(236, 72, 153, 0.05))",
+          "backdropFilter": "blur(10px)"
+        },
+        "elevated": {
+          "boxShadow": "var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.1)"
+        }
+      }
+    }
+  },
+  "metadata": {
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z", 
+    "category": "creative",
+    "tags": ["creative", "bold", "vibrant", "agency", "modern"]
+  }
+}

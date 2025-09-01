@@ -1,0 +1,145 @@
+{
+  "name": "Modern Startup",
+  "version": "1.0.0",
+  "description": "Clean, modern brand for early-stage startups",
+  "colors": {
+    "primary": "#3B82F6",
+    "secondary": "#64748B", 
+    "accent": "#F59E0B",
+    "success": "#10B981",
+    "warning": "#F59E0B",
+    "error": "#EF4444",
+    "neutral": {
+      "50": "#FAFAFA",
+      "100": "#F5F5F5",
+      "200": "#EEEEEE",
+      "300": "#E0E0E0",
+      "400": "#BDBDBD",
+      "500": "#9E9E9E",
+      "600": "#757575",
+      "700": "#424242",
+      "800": "#212121",
+      "900": "#121212"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "heading": "Inter, system-ui, sans-serif",
+      "body": "Inter, system-ui, sans-serif",
+      "mono": "SF Mono, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace"
+    },
+    "fontSize": {
+      "xs": "0.75rem",
+      "sm": "0.875rem", 
+      "base": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem"
+    },
+    "fontWeight": {
+      "normal": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "lineHeight": {
+      "tight": 1.25,
+      "normal": 1.5,
+      "relaxed": 1.75
+    }
+  },
+  "spacing": {
+    "base": 8,
+    "scale": [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
+  },
+  "borderRadius": {
+    "sm": "4px",
+    "md": "6px", 
+    "lg": "8px",
+    "xl": "12px",
+    "full": "9999px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+    "md": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+  },
+  "components": {
+    "button": {
+      "base": {
+        "borderRadius": "var(--border-radius-md)",
+        "fontWeight": "var(--font-weight-medium)",
+        "transition": "all 0.2s ease",
+        "cursor": "pointer",
+        "border": "none",
+        "fontSize": "var(--font-size-base)"
+      },
+      "variants": {
+        "primary": {
+          "backgroundColor": "var(--color-primary)",
+          "color": "white",
+          "padding": "var(--spacing-2) var(--spacing-4)"
+        },
+        "secondary": {
+          "backgroundColor": "var(--color-secondary)",
+          "color": "white", 
+          "padding": "var(--spacing-2) var(--spacing-4)"
+        },
+        "outline": {
+          "backgroundColor": "transparent",
+          "color": "var(--color-primary)",
+          "border": "1px solid var(--color-primary)",
+          "padding": "var(--spacing-2) var(--spacing-4)"
+        }
+      }
+    },
+    "input": {
+      "base": {
+        "borderRadius": "var(--border-radius-md)",
+        "border": "1px solid var(--color-neutral-300)",
+        "padding": "var(--spacing-2) var(--spacing-3)",
+        "fontSize": "var(--font-size-base)",
+        "fontFamily": "var(--font-body)",
+        "transition": "border-color 0.2s ease"
+      },
+      "states": {
+        "default": {
+          "borderColor": "var(--color-neutral-300)"
+        },
+        "focus": {
+          "borderColor": "var(--color-primary)",
+          "outline": "2px solid var(--color-primary)",
+          "outlineOffset": "2px"
+        },
+        "error": {
+          "borderColor": "var(--color-error)"
+        }
+      }
+    },
+    "card": {
+      "base": {
+        "backgroundColor": "white",
+        "borderRadius": "var(--border-radius-lg)",
+        "boxShadow": "var(--shadow-md)",
+        "padding": "var(--spacing-6)"
+      },
+      "variants": {
+        "elevated": {
+          "boxShadow": "var(--shadow-lg)"
+        },
+        "bordered": {
+          "border": "1px solid var(--color-neutral-200)",
+          "boxShadow": "var(--shadow-sm)"
+        }
+      }
+    }
+  },
+  "metadata": {
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z",
+    "category": "startup",
+    "tags": ["modern", "clean", "professional", "startup"]
+  }
+}

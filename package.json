@@ -25,8 +25,16 @@
     "brand-guide",
     "claude"
   ],
-  "author": "Figment Team",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoshuaPaul20/Figment.git"
+  },
+  "homepage": "https://github.com/JoshuaPaul20/Figment#readme",
+  "bugs": {
+    "url": "https://github.com/JoshuaPaul20/Figment/issues"
+  },
+  "author": "Joshua Paul",
+  "license": "UNLICENSED",
   "devDependencies": {
     "lerna": "^8.1.2",
     "typescript": "^5.5.2",

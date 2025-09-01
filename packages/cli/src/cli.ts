@@ -1,3 +1,4 @@
+
 import { Command } from 'commander';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
@@ -7,8 +8,8 @@ import path from 'path';
 import os from 'os'; // Added os import
 
 // Import from core package using path alias
-import { BrandContextManager } from 'figment-mcp/brand-context';
-import type { BrandContext } from 'figment-mcp/types';
+import { BrandContextManager } from '@figment/core/brand-context';
+import type { BrandContext } from '@figment/core/types';
 
 const program = new Command();
 
@@ -37,7 +38,7 @@ program
 
         // Wait a moment for server to start
         setTimeout(() => {
-          import('open').then(open => open('http://localhost:3456'));
+          import('open').then(module => module.default('http://localhost:3456'));
         }, 3000);
 
         console.log('Web interface running at http://localhost:3456');
@@ -72,13 +73,13 @@ program
     console.log(`
   ███████╗██╗ ██████╗ ███╗   ███╗███████╗███╗   ██╗████████╗
   ██╔════╝██║██╔════╝ ████╗ ████║██╔════╝████╗  ██║╚══██╔══╝
-  █████╗  ██║██║  ███╗██╔████╔██║█████╗  ██╔██╗ ██║   ██║   
-  ██╔══╝  ██║██║   ██║██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║   
-  ██║     ██║╚██████╔╝██║ ╚═╝ ██║███████╗██║ ╚████║   ██║   
+  █████╗  ██║██║  ███╗██╔████╔██║█████╗  ██╔██╗ ██║   ██║
+  ██╔══╝  ██║██║   ██║██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║
+  ██║     ██║╚██████╔╝██║ ╚═╝ ██║███████╗██║ ╚████║   ██║
   ╚═╝     ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝
 `);
     console.log(chalk.blue.bold('🎨 Welcome to Figment!'));
-    console.log("Let's set up your brand guide for AI-powered code generation.\n");
+    console.log("Let's set up your brand guide for AI-powered code generation.\\n");
 
     const brandManager = new BrandContextManager();
 
@@ -89,11 +90,11 @@ program
       await brandManager.saveContext(brandContext);
       spinner.succeed('Brand context saved!');
 
-      console.log(chalk.green('\n✅ Setup complete!'));
-      console.log('\nNext steps:');
+      console.log(chalk.green('\\n✅ Setup complete!'));
+      console.log('\\nNext steps:');
       console.log('1. Configure your MCP client (Claude Desktop, Cursor, etc.)');
       console.log('2. Start coding with AI - your components will now follow your brand guidelines!');
-      console.log('\nRun `figment status` to verify everything is working.');
+      console.log('\\nRun `figment status` to verify everything is working.');
 
     } catch (error) {
       console.error(chalk.red('Failed to initialize brand guide:'), error);
@@ -116,7 +117,7 @@ program
 
         spinner.succeed('Imported brand guide from markdown');
 
-        console.log('\nFound the following brand elements:');
+        console.log('\\nFound the following brand elements:');
         if (partialContext.colors) {
           console.log(chalk.blue('Colors:'));
           Object.entries(partialContext.colors).forEach(([key, value]) => {
@@ -141,7 +142,7 @@ program
         if (shouldComplete) {
           const completeContext = await completeBrandContext(partialContext);
           await brandManager.saveContext(completeContext);
-          console.log(chalk.green('\n✅ Brand guide imported and completed!'));
+          console.log(chalk.green('\\n✅ Brand guide imported and completed!'));
         }
       } else {
         spinner.fail(`File format not yet supported: ${path.extname(file)}`);
@@ -190,15 +191,7 @@ program
     // Check if MCP server would work
     console.log('\nMCP Integration:');
     console.log('To use with Claude Desktop, add this to your config:');
-    console.log(chalk.gray(`
-{
-  "mcpServers": {
-    "figment": {
-      "command": "figment",
-      "args": ["serve"]
-    }
-  }
-}`));
+    console.log(chalk.gray(`\n{\n  "mcpServers": {\n    "figment": {\n      "command": "figment",\n      "args": ["serve"]\n    }\n  }\n}`));
   });
 
 // Configure Gemini CLI integration
@@ -247,7 +240,7 @@ program
 
     const newConfigContent = JSON.stringify(currentConfig, null, 2);
 
-    console.log(chalk.yellow('\nProposed changes to settings.json:'));
+    console.log(chalk.yellow('\\nProposed changes to settings.json:'));
     console.log(chalk.gray(newConfigContent));
 
     const { confirm } = await inquirer.prompt([
@@ -262,16 +255,16 @@ program
     if (confirm) {
       try {
         await fs.writeFile(geminiConfigPath, newConfigContent, 'utf8');
-        console.log(chalk.green('\n✅ Gemini CLI configured successfully!'));
+        console.log(chalk.green('\\n✅ Gemini CLI configured successfully!'));
         console.log('Your Gemini CLI will now automatically start the Figment MCP server when needed.');
         console.log('You do NOT need to manually run `npm run figment -- serve` every time.');
       } catch (error: unknown) {
-        console.error(chalk.red(`\nError writing to settings.json: ${(error as Error).message}`));
+        console.error(chalk.red(`\\nError writing to settings.json: ${(error as Error).message}`));
         console.log(chalk.yellow('Please check file permissions or try running as administrator/sudo if necessary.'));
         process.exit(1);
       }
     } else {
-      console.log(chalk.yellow('\nConfiguration cancelled. No changes were made.'));
+      console.log(chalk.yellow('\\nConfiguration cancelled. No changes were made.'));
     }
   });
 
@@ -281,7 +274,7 @@ program
   .command('configure-claude')
   .description('Automate configuration of Claude Code to use Figment MCP server')
   .action(async () => {
-    console.log(chalk.blue.bold('\n✨ Configuring Claude Code for Figment MCP ✨'));
+    console.log(chalk.blue.bold('\\n✨ Configuring Claude Code for Figment MCP ✨'));
 
     const claudeConfigPath = path.join(process.cwd(), '.mcp.json');
     console.log(`Attempting to configure: ${chalk.cyan(claudeConfigPath)}`);
@@ -358,7 +351,7 @@ program
   .action(async () => {
     try {
       // Import and start the MCP server from core package
-      const { FigmentMCPServer } = await import('figment-mcp/server');
+      const { FigmentMCPServer } = await import('@figment/core/server');
       const server = new FigmentMCPServer();
       await server.start();
     } catch (error) {
@@ -407,14 +400,14 @@ async function collectBrandInfo(quick: boolean = false): Promise<BrandContext> {
       name: 'primaryColor',
       message: 'Primary brand color (hex):',
       default: '#3B82F6',
-      validate: (input: string) => /^#[0-9A-Fa-f]{6}$/.test(input) || 'Please enter a valid hex color (e.g., #3B82F6)'
+      validate: (input: string) => /^#[0-9A-Fa-f]{6}$/.test(input) || 'Please enter a valid hex color (e.g., #FF00FF)'
     },
     {
       type: 'input',
       name: 'secondaryColor',
       message: 'Secondary brand color (hex):',
       default: '#64748B',
-      validate: (input: string) => /^#[0-9A-Fa-f]{6}$/.test(input) || 'Please enter a valid hex color (e.g., #64748B)'
+      validate: (input: string) => /^#[0-9A-Fa-f]{6}$/.test(input) || 'Please enter a valid hex color (e.g., #FF00FF)'
     }
   ];
 
@@ -424,6 +417,7 @@ async function collectBrandInfo(quick: boolean = false): Promise<BrandContext> {
         type: 'input',
         name: 'accentColor',
         message: 'Accent color (hex, optional):',
+        default: '',
         validate: (input: string) => !input || /^#[0-9A-Fa-f]{6}$/.test(input) || 'Please enter a valid hex color (e.g., #FF00FF)'
       },
       {
@@ -443,12 +437,12 @@ async function collectBrandInfo(quick: boolean = false): Promise<BrandContext> {
         name: 'baseSpacing',
         message: 'Base spacing unit (px):',
         default: '8',
-        validate: (input: string) => !isNaN(Number(input)) || 'Please enter a number'
+        validate: (input: string) => (!isNaN(Number(input)) || 'Please enter a number') as any // eslint-disable-line @typescript-eslint/no-explicit-any
       }
     );
   }
 
-  const answers = await inquirer.prompt(questions);
+  const answers = await inquirer.prompt(questions as any); // eslint-disable-line @typescript-eslint/no-explicit-any
 
   const brandContext: BrandContext = {
     name: answers.name,
@@ -481,9 +475,9 @@ async function collectBrandInfo(quick: boolean = false): Promise<BrandContext> {
 }
 
 async function completeBrandContext(partial: Partial<BrandContext>): Promise<BrandContext> {
-  console.log('\nLet\'s complete your brand guide setup...\n');
+  console.log(`\\nLet's complete your brand guide setup...\\n`);
 
-  const questions: unknown[] = [];
+  const questions: any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   if (!partial.name) {
     questions.push({
@@ -534,12 +528,12 @@ async function completeBrandContext(partial: Partial<BrandContext>): Promise<Bra
     });
   }
 
-  const answers = questions.length > 0 ? await inquirer.prompt(questions as []) : {};
+  const answers = questions.length > 0 ? await inquirer.prompt(questions as any) : {}; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   // Merge answers with partial context
   const complete: BrandContext = {
     name: partial.name || answers.name || 'My Brand',
-    version: partial.version || '1.0.0',
+    version: '1.0.0',
     colors: {
       primary: partial.colors?.primary || answers.primaryColor,
       secondary: partial.colors?.secondary || answers.secondaryColor,
