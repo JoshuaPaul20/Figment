@@ -1,11 +1,15 @@
-# 🎨 Figment
+# Figment
 
 **Brand-aware AI code generation that actually follows your design system.**
 
-Transform your brand guidelines into AI context that generates perfectly consistent components across any codebase. No more explaining your colors, typography, and spacing to AI tools—Figment makes them brand-aware automatically.
+Transform your brand guidelines into AI context that generates perfectly consistent components across any codebase. No more explaining your colors, typography, and spacing to AI tools, Figment makes them brand-aware automatically.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/JoshuaPaul20/Figment/main/packages/web/public/Figment.png" alt="Figment Logo" style="margin-bottom: 20px;" />
+  <img 
+    src="https://raw.githubusercontent.com/JoshuaPaul20/Figment/main/packages/web/public/Figment.png" 
+    alt="Figment Logo" 
+    style="margin-bottom: 20px; width: 300px;" 
+  />
 </div>
 
 
