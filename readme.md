@@ -1,150 +1,77 @@
-# Figment
+# Figment: Brand-Aware AI Code Generation
 
-Brand-aware AI code generation through Model Context Protocol (MCP). Figment ensures your AI-generated components follow your brand guidelines automatically.
+Figment is a powerful tool that ensures your AI-generated code components automatically adhere to your brand's unique guidelines. Say goodbye to inconsistent designs and hello to perfectly branded code, every time.
 
-![Figment Logo](https://raw.githubusercontent.com/figmentdev/figment/main/assets/logo.png)
+![Figment Logo](https://raw.githubusercontent.com/JoshuaPaul20/Figment/main/Figment.png)
 
-## Quick Start
+## ✨ Features
+
+*   🎨 **Interactive Brand Setup** - Define your brand's colors, typography, and spacing through an intuitive CLI wizard or a visual web interface.
+*   🤖 **MCP Integration** - Seamlessly integrates with Model Context Protocol (MCP) compatible AI tools like Gemini CLI, Claude Code, Cursor, and Windsurf.
+*   📝 **Import Existing Guides** - Easily import brand guidelines from markdown files, PDFs, or even Figma design tokens.
+*   🎯 **Component Patterns** - Define and manage reusable component styles and patterns that your AI can leverage for consistent UI elements.
+*   🔧 **CSS Generation** - Automatically generate CSS custom properties (CSS variables) directly from your defined brand context.
+*   ⚡ **Zero Workflow Change** - Figment works in the background, providing your AI tools with real-time brand context without interrupting your existing development workflow.
+
+## 🚀 Quick Start
+
+Get started with Figment in minutes!
 
 ### Installation
 
-```bash
-# Install globally via npm
-npm install -g @figmentdev/figment
+Install Figment globally via npm:
 
-# Verify installation
-figment --version
+```bash
+npm install -g @figmentdev/figment
 ```
 
-### Alternative Installation Methods
+Verify your installation:
 
 ```bash
-# Use without installing globally
-npx @figmentdev/figment --help
-
-# Install from GitHub
-npm install -g https://https://github.com/figmentdev/figment.git
+figment --version
 ```
 
 ### Setup Your Brand Guide
 
-```bash
-# Quick setup (3 minutes)
-figment init
+Use the quick setup wizard to define your core brand elements:
 
-# Full setup with web interface
+```bash
+figment init
+```
+
+For a more visual and comprehensive setup, launch the web interface:
+
+```bash
 figment setup --web
-
-# Import existing brand guide
-figment import brand-guide.md
 ```
 
-## Building and Running
+## 💡 How It Works
 
-### Entire Project
+Figment acts as a bridge between your brand guidelines and your AI coding assistant.
 
-*   **Build all packages:** `npm run build`
-*   **Run all packages in development mode:** `npm run dev`
+1.  **Define Your Brand:** You set up your brand's colors, fonts, spacing, and component patterns using Figment's CLI or web interface.
+2.  **AI Gets Context:** Figment exposes a Model Context Protocol (MCP) server that your AI tools connect to. This server provides real-time access to your brand guidelines.
+3.  **Generate Consistent Code:** When your AI generates code, it queries Figment's MCP server for your brand context, ensuring every component it creates is perfectly on-brand.
 
-### Individual Packages
+## 💻 Usage Examples
 
-*   **Core Package:**
-    *   **Build:** `npm run build -w packages/core`
-    *   **Development:** `npm run dev -w packages/core`
-*   **CLI Package:**
-    *   **Build:** `npm run build -w packages/cli`
-    *   **Development:** `npm run dev -w packages/cli`
-*   **Web Package:**
-    *   **Build:** `npm run build -w packages/web`
-    *   **Development:** `npm run dev -w packages/web` (runs on `http://localhost:3456`)
-
-### Running the CLI
-
-After building the CLI, you can run it from the root of the project:
+Here are a few common ways to use Figment:
 
 ```bash
-npm run figment -- [command]
-```
-
-For example:
-
-```bash
-npm run figment -- init
-npm run figment -- status
-```
-
-## Integrating with AI Tools (MCP Server)
-
-Figment exposes a Model Context Protocol (MCP) server that AI tools can connect to for brand-aware code generation. To use Figment with your AI tool, you'll typically need to configure your tool to connect to a local MCP server.
-
-First, start the Figment MCP server:
-
-```bash
-npm run figment -- serve
-```
-
-This command will start the server and keep it running. You'll need to keep this process active while using your AI tool.
-
-### Example: Configuring Gemini CLI
-
-While specific configuration steps may vary depending on your Gemini CLI setup, the general approach involves telling Gemini CLI to connect to a local MCP server. You would typically add a configuration similar to this in your Gemini CLI's settings or a relevant configuration file:
-
-```json
-{
-  "mcpServers": {
-    "figment": {
-      "command": "figment",
-      "args": ["serve"]
-    }
-  }
-}
-```
-
-### Example: Configuring Claude Code
-
-For Claude Code, you would typically add a configuration similar to this in your Claude Code's settings or a relevant configuration file:
-
-```json
-{
-  "mcpServers": {
-    "figment": {
-      "command": "figment",
-      "args": ["serve"]
-    }
-  }
-}
-```
-
-Once configured, your AI tool should be able to:
-
-*   **Access Brand Resources:** Query resources like `figment://brand-guidelines` (for markdown guidelines), `figment://css-variables` (for CSS custom properties), or `figment://brand-context` (for raw JSON brand data).
-*   **Utilize Figment Tools:** Call tools exposed by the Figment MCP server, such as `get_brand_colors`, `get_component_pattern`, `validate_design_compliance`, and `generate_component_code` to generate brand-compliant code.
-
-Refer to your AI tool's documentation for precise instructions on configuring external MCP servers and utilizing their exposed resources and tools.
-
-## How It Works
-
-1.  **Define Your Brand** - Set colors, fonts, spacing through interactive setup
-2.  **AI Gets Context** - Your brand guidelines are automatically provided to AI tools
-3.  **Generate Consistent Code** - Every component follows your brand automatically
-
-## Example Usage
-
-```bash
-# Set up your brand colors, fonts, and spacing
+# Set up your brand colors, fonts, and spacing interactively
 figment init
 
-# Generate CSS variables for your project
-figment css
+# Generate CSS variables based on your brand guide
+figment css --output ./src/styles/brand-variables.css
 
-# Check your brand configuration
+# Check the current status of your Figment configuration and MCP server
 figment status
 
-# Start the MCP server for AI integration
+# Start the MCP server for AI integration (keep this running in the background)
 figment serve
 ```
 
-Your AI coding tools will now generate components like:
+Your AI coding tools will now generate components like this:
 
 ```jsx
 // Before Figment: Generic styling
@@ -152,7 +79,7 @@ Your AI coding tools will now generate components like:
   Click me
 </button>
 
-// After Figment: Your exact brand colors and spacing
+// After Figment: Your exact brand colors and spacing, automatically applied
 <button
   className="px-4 py-2 rounded font-medium transition-colors"
   style={{
@@ -165,16 +92,9 @@ Your AI coding tools will now generate components like:
 </button>
 ```
 
-## Features
+## 🛠️ Commands
 
-*   🎨 **Interactive Brand Setup** - Quick CLI wizard or visual web interface
-*   🤖 **MCP Integration** - Works with Cursor, Windsurf, and other MCP tools
-*   📝 **Import Existing Guides** - Parse markdown, PDF, and Figma design files
-*   🎯 **Component Patterns** - Define reusable component styles and patterns
-*   🔧 **CSS Generation** - Export CSS custom properties from your brand context
-*   ⚡ **Zero Workflow Change** - AI tools automatically get your brand context
-
-## Commands
+A comprehensive list of Figment CLI commands:
 
 *   `figment init` - Initialize your brand guide interactively. Use `--quick` for minimal setup.
 *   `figment status` - Check your current configuration and MCP integration status.
@@ -182,56 +102,9 @@ Your AI coding tools will now generate components like:
 *   `figment serve` - Start the MCP server (used internally by AI tools).
 *   `figment import <file>` - Import from existing brand guides. Supports `.md` (extracts colors and fonts automatically).
 
-## Brand Context Structure
+## 🤝 Supported AI Tools
 
-Figment stores your brand information in `.figment/brand-context.json`:
-
-```json
-{
-  "name": "My Brand",
-  "version": "1.0.0",
-  "colors": {
-    "primary": "#3B82F6",
-    "secondary": "#64748B",
-    "accent": "#10B981"
-  },
-  "typography": {
-    "fontFamily": {
-      "heading": "Inter, sans-serif",
-      "body": "Inter, sans-serif"
-    },
-    "fontSize": {
-      "base": "16px"
-    }
-  },
-  "spacing": {
-    "base": 8,
-    "scale": [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96]
-  },
-  "components": {
-    "button": {
-      "base": "px-4 py-2 rounded font-medium transition-colors",
-      "variants": {
-        "primary": "bg-primary text-white hover:bg-primary/90",
-        "secondary": "bg-secondary text-white hover:bg-secondary/90"
-      }
-    }
-  }
-}
-```
-
-## MCP Tools
-
-Figment provides these tools to AI agents:
-
-*   `get_brand_colors` - Get your brand colors in various formats
-*   `get_component_pattern` - Get CSS classes for component types
-*   `validate_design_compliance` - Check if code follows brand guidelines
-*   `generate_component_code` - Generate framework-specific components
-
-## Supported AI Tools
-
-Figment works with any MCP-compatible tool:
+Figment is designed to work with any MCP-compatible AI coding tool:
 
 *   ✅ Gemini CLI
 *   ✅ Claude Code
@@ -240,34 +113,41 @@ Figment works with any MCP-compatible tool:
 *   ✅ Cline
 *   ✅ Any tool supporting MCP servers
 
-## Development
+## 🧑‍💻 Development
 
 ### Setup
 
+To set up the development environment:
+
 ```bash
 # Clone the repository
-git clone https://github.com/figmentdev/figment.git # Replace with actual repo URL if different
-cd figment
+git clone https://github.com/JoshuaPaul20/Figment.git
+cd Figment
 npm install
 ```
 
 ### Building
 
+Build all packages in the monorepo:
+
 ```bash
-# Build all packages
 npm run build
 ```
 
 ### Running in Development Mode
 
+Run all packages in development mode (CLI, Core MCP Server, and Web UI):
+
 ```bash
-# Run all packages in development mode
 npm run dev
 ```
 
 ### Testing
 
+Run unit and end-to-end tests:
+
 ```bash
-# Run tests
 npm test
 ```
+
+
