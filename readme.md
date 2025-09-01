@@ -2,7 +2,9 @@
 
 Figment is a powerful tool that ensures your AI-generated code components automatically adhere to your brand's unique guidelines. Say goodbye to inconsistent designs and hello to perfectly branded code, every time.
 
-![Figment Logo](https://raw.githubusercontent.com/JoshuaPaul20/Figment/main/Figment.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/JoshuaPaul20/Figment/main/Figment.png" alt="Figment Logo" style="margin-bottom: 20px;" />
+</div>
 
 ## ✨ Features
 
@@ -91,6 +93,59 @@ Your AI coding tools will now generate components like this:
   Click me
 </button>
 ```
+
+## 🔌 Integrating with AI Tools (MCP Server)
+
+Figment exposes a Model Context Protocol (MCP) server that AI tools can connect to for brand-aware code generation. To use Figment with your AI tool, you'll typically need to configure your tool to connect to a local MCP server.
+
+First, start the Figment MCP server:
+
+```bash
+npm run figment -- serve
+```
+
+This command will start the server and keep it running. You'll need to keep this process active while using your AI tool.
+
+### Configuration Examples
+
+While specific configuration steps may vary depending on your AI tool setup, the general approach involves telling your AI tool to connect to a local MCP server.
+
+#### Gemini CLI
+
+You would typically add a configuration similar to this in your Gemini CLI's settings or a relevant configuration file:
+
+```json
+{
+  "mcpServers": {
+    "figment": {
+      "command": "figment",
+      "args": ["serve"]
+    }
+  }
+}
+```
+
+#### Claude Code
+
+For Claude Code, you would typically add a configuration similar to this in your Claude Code's settings or a relevant configuration file:
+
+```json
+{
+  "mcpServers": {
+    "figment": {
+      "command": "figment",
+      "args": ["serve"]
+    }
+  }
+}
+```
+
+Once configured, your AI tool should be able to:
+
+*   **Access Brand Resources:** Query resources like `figment://brand-guidelines` (for markdown guidelines), `figment://css-variables` (for CSS custom properties), or `figment://brand-context` (for raw JSON brand data).
+*   **Utilize Figment Tools:** Call tools exposed by the Figment MCP server, such as `get_brand_colors`, `get_component_pattern`, `validate_design_compliance`, and `generate_component_code` to generate brand-compliant code.
+
+Refer to your AI tool's documentation for precise instructions on configuring external MCP servers and utilizing their exposed resources and tools.
 
 ## 🛠️ Commands
 
