@@ -81,6 +81,27 @@ Figment creates a **Model Context Protocol (MCP) server** that your AI tools con
 - ✅ Validation rules for design compliance
 - 🔧 Framework-specific code generation
 
+## 💡 Understanding Figment's Architecture
+
+Unlike a typical `npm install` library or a simple global CLI, Figment is a **local application suite** designed to run on your machine. It's structured as a **monorepo** containing multiple interconnected parts:
+
+*   **`packages/core`**: This is the brain, housing the **Model Context Protocol (MCP) server** that your AI tools connect to, and the logic for managing your brand context.
+*   **`packages/web`**: A **full web application** for visually setting up and managing your brand guidelines.
+*   **`packages/cli`**: The command-line interface that helps you interact with Figment (e.g., `init`, `serve`, `configure`).
+
+**Why this approach?**
+
+*   **Privacy & Performance:** Your sensitive brand data stays local on your machine, ensuring privacy and lightning-fast responses for your AI.
+*   **Offline Capability:** Work with your brand guidelines even without an internet connection.
+*   **Comprehensive Tooling:** Provides both a powerful CLI and a user-friendly web interface for managing your brand.
+*   **Robust AI Integration:** The MCP server provides a dedicated, stable channel for AI tools to access your brand context.
+
+**Important Workflow Notes:**
+
+*   **Local Server is Key:** For your AI tool to communicate with Figment, the MCP server **must be running** in the background. You start it with `npm run figment -- serve` (keep this terminal window open).
+*   **Monorepo Setup:** You clone the entire repository and run `npm install` and `npm run build` to set up this local application. This is different from installing a single npm package.
+*   **Robust Configuration:** Commands like `figment configure-gemini` and `figment configure-claude` are designed to robustly configure your AI tool to connect to Figment, even if `figment` isn't directly in your system's PATH. They ensure your AI tool correctly calls the Figment server.
+
 ### Supported AI Tools
 - ✅ Claude Desktop / Claude Code
 - ✅ Cursor  

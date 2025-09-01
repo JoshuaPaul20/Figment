@@ -222,8 +222,8 @@ program
 
     const figmentMcpConfig = {
       figment: {
-        command: 'figment',
-        args: ['serve'],
+        command: 'node', // Use node instead of 'figment'
+        args: [path.resolve(__dirname, 'cli.js'), 'serve'], // Full path to CLI
       },
     };
 
@@ -297,8 +297,8 @@ program
 
     const figmentMcpConfig = {
       figment: {
-        command: 'figment',
-        args: ['serve'],
+        command: 'node', // Use node instead of 'figment'
+        args: [path.resolve(__dirname, 'cli.js'), 'serve'], // Full path to CLI
       },
     };
 

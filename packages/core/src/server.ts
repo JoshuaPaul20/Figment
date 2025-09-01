@@ -462,11 +462,26 @@ export const Button: React.FC<ButtonProps> = ({
 
   async start() {
     // Load existing brand context if available
-    await this.brandManager.loadContext();
-    
+    const context = await this.brandManager.loadContext();
+
+    if (!context) {
+      console.error('WARNING: No brand context found. Users should run `figment init` first.');
+      // You might want to expose this as a tool to help users
+    } else {
+      console.error(`Figment MCP Server running with brand: ${context.name}`);
+    }
+
+    // Suppress stdout logging to avoid corrupting JSON-RPC messages
+    const originalLog = console.log;
+    const originalWarn = console.warn;
+
+    console.log = (...args) => console.error('[LOG]', ...args);
+    console.warn = (...args) => console.error('[WARN]', ...args);
+
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
-    
+
+    // Only use console.error for MCP servers
     console.error('Figment MCP Server running...');
   }
 }
