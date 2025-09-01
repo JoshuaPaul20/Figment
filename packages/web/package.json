@@ -1,0 +1,35 @@
+{
+  "name": "@figmentdev/figment-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3456",
+    "build": "next build",
+    "start": "next start -p 3456",
+    "lint": "next lint --fix"
+  },
+  "dependencies": {
+    "animejs": "^3.2.2",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.263.1",
+    "next": "^15.5.0",
+    "react": "^19.1.1",
+    "react-color-palette": "^7.3.1",
+    "react-colorful": "^5.6.1",
+    "react-dom": "^19.1.1",
+    "tailwind-merge": "^2.0.0",
+    "figment-mcp": "file:../core"
+  },
+  "devDependencies": {
+    "@types/animejs": "^3.1.13",
+    "@types/node": "^20.19.11",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.2"
+  }
+}

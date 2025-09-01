@@ -1,0 +1,37 @@
+{
+  "name": "@figmentdev/figment",
+  "version": "0.1.0",
+  "description": "Brand-aware AI code generation CLI",
+  "type": "module", 
+  "bin": {
+    "figment": "dist/cli.js"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "figment": "node dist/cli.js",
+    "lint": "eslint src/**/*.ts",
+    "test": "cd ../.. && node scripts/test-e2e.js"
+  },
+  "dependencies": {
+    "commander": "^12.0.0", 
+    "inquirer": "^10.0.0",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.0",
+    "gray-matter": "^4.0.3",
+    "zod": "^3.22.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "cosmiconfig": "^9.0.0",
+    "open": "^10.0.0",
+    "figment-mcp": "file:../core"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/inquirer": "^9.0.0", 
+    "typescript": "^5.7.0",
+    "tsup": "^8.3.0"
+  }
+}

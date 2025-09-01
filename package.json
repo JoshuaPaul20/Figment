@@ -1,0 +1,37 @@
+{
+  "name": "@figmentdev/figment-workspace",
+  "version": "0.1.0", 
+  "private": true,
+  "description": "Brand-aware AI code generation through Model Context Protocol",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "build:core": "npm run build -w packages/core",
+    "build:cli": "npm run build -w packages/cli", 
+    "build:web": "npm run build -w packages/web",
+    "dev": "npm run dev --workspaces",
+    "test": "npm run test --workspaces",
+    "test:e2e": "node scripts/test-e2e.js",
+    "lint": "npm run lint --workspaces",
+    "clean": "rimraf packages/*/dist packages/*/.next node_modules packages/*/node_modules",
+    "figment": "node packages/cli/dist/cli.js"
+  },
+  "keywords": [
+    "mcp",
+    "design-system",
+    "ai", 
+    "brand-guide",
+    "claude"
+  ],
+  "author": "Figment Team",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^8.1.2",
+    "typescript": "^5.5.2",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^8.57.0"
+  }
+}
