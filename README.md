@@ -33,31 +33,50 @@ You: ✨ *ships it*
 
 ## 🚀 Quick Start
 
-### Quick Install from GitHub
-```bash
-git clone https://github.com/JoshuaPaul20/Figment.git && cd Figment && npm install && npm run build && npm link packages/cli && figment init
-```
-
 ### Step-by-Step Installation
+
+**⚠️ IMPORTANT: Run all commands from the root Figment directory unless specified otherwise**
+
 ```bash
-# 1. Clone and install
+# 1. Clone the repository
 git clone https://github.com/JoshuaPaul20/Figment.git
 cd Figment
+
+# 2. Install dependencies and build
 npm install
 npm run build
 
-# 2. Link CLI globally
-cd packages/cli  
-npm link
+# 3. Link CLI globally (FROM ROOT DIRECTORY)
+npm link packages/cli
 
-# 3. Set up your brand
+# 4. Go to your project directory
+cd /path/to/your/project
+
+# 5. Initialize Figment in your project
 figment init
 
-# 4. Configure your AI tool
-figment configure-claude  # or configure-gemini
-
-# 5. Start coding with brand-aware AI! 🎉
+# 6. Configure Claude Code/Desktop
+# Add this to your Claude Desktop config:
 ```
+
+### Claude Desktop Configuration
+
+Add this to your Claude Desktop configuration file:
+- **Mac**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "figment": {
+      "command": "figment",
+      "args": ["serve"]
+    }
+  }
+}
+```
+
+**Restart Claude Desktop** after adding this configuration.
 
 ## 🎯 Who This Is For
 
@@ -107,12 +126,11 @@ Unlike a typical `npm install` library or a simple global CLI, Figment is a **lo
 *   **Robust Configuration:** Commands like `figment configure-gemini` and `figment configure-claude` are designed to robustly configure your AI tool to connect to Figment, even if `figment` isn't directly in your system's PATH. They ensure your AI tool correctly calls the Figment server.
 
 ### Supported AI Tools
-- ✅ Claude Desktop / Claude Code
-- ✅ Cursor  
+- ✅ **Claude Desktop / Claude Code** (Primary)
+- ✅ Cursor (via MCP extension)
 - ✅ Cline (formerly Claude Dev)
-- ✅ Windsurf
-- ✅ Gemini CLI
 - ✅ Any MCP-compatible tool
+- 🔄 More integrations coming soon
 
 ### Supported Frameworks  
 - ✅ React + TypeScript
@@ -135,13 +153,17 @@ figment init --quick
 figment import brand-guide.md
 ```
 
-### AI Tool Configuration
-```bash
-# Auto-configure Claude Code
-figment configure-claude
+### Using Figment in Your Project
 
-# Auto-configure Gemini CLI  
-figment configure-gemini
+```bash
+# In any project directory where you want brand-aware AI:
+figment init
+
+# Check if everything is working:
+figment status
+
+# Start the web interface (optional):
+figment setup --web
 ```
 
 ### Advanced Usage
@@ -200,27 +222,52 @@ Your AI will generate components like this automatically:
 </button>
 ```
 
-## ⚙️ Configuration
+## 🔧 Troubleshooting
 
-### AI Tool Setup
+### Common Issues
 
-#### Claude Desktop  
-Add to your `~/Library/Application Support/Claude/claude_desktop_config.json`:
-```json
-{
-  "mcpServers": {
-    "figment": {
-      "command": "figment",
-      "args": ["serve"]
-    }
-  }
-}
+**❌ "No workspaces found" error**
+```bash
+# Solution: Always run figment commands from the root Figment directory
+cd /path/to/Figment  # Not packages/cli or packages/web
+figment setup --web
 ```
 
-Or just run: `figment configure-claude`
+**❌ "figment command not found"**
+```bash
+# Solution: Re-link the CLI from the root directory
+cd /path/to/Figment
+npm link packages/cli
+```
 
-#### Cursor & Other Tools
-Use the MCP extension or add similar configuration. Run `figment configure-claude` for auto-setup.
+**❌ Claude Code shows "No MCP servers" or tools not available**
+1. Check your Claude Desktop config file exists and has the correct JSON
+2. Restart Claude Desktop completely
+3. Verify `figment` command works in terminal: `figment status`
+
+**❌ Brand context not found in project**
+```bash
+# Solution: Initialize Figment in your project directory
+cd /path/to/your/project
+figment init
+# This creates a .figment folder with your brand context
+```
+
+### Verification Steps
+
+1. **Check CLI is installed**: `figment --help`
+2. **Check brand context exists**: `figment status` 
+3. **Check MCP integration**: Open Claude Code, look for "🟢 figment - Ready (4 tools)"
+4. **Test generation**: Ask Claude: "Generate a button using my brand colors"
+
+## ⚙️ Configuration Files
+
+### Project Structure After Setup
+```
+your-project/
+└── .figment/
+    └── brand-context.json  # Your brand guidelines
+```
 
 ### Brand Guide Format
 
