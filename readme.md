@@ -3,7 +3,7 @@
 Figment is a powerful tool that ensures your AI-generated code components automatically adhere to your brand's unique guidelines. Say goodbye to inconsistent designs and hello to perfectly branded code, every time.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/JoshuaPaul20/Figment/main/Figment.png" alt="Figment Logo" style="margin-bottom: 20px;" />
+  <img src="https://raw.githubusercontent.com/JoshuaPaul20/Figment/main/packages/web/public/Figment.png" alt="Figment Logo" style="margin-bottom: 20px;" />
 </div>
 
 ## ✨ Features
