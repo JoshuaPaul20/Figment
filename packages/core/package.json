@@ -30,7 +30,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "start": "node dist/server.js",
-    "test": "vitest",
+    "test": "vitest run",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts",
     "prepublishOnly": "npm run build"

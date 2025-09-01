@@ -4,9 +4,9 @@
  * End-to-end test to verify Figment works after build
  */
 
-import { execSync } from 'child_process';
-import { accessSync } from 'fs';
-import chalk from 'chalk';
+const { execSync } = require('child_process');
+const { accessSync } = require('fs');
+const chalk = require('chalk');
 
 function runTest(command, description) {
   try {

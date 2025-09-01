@@ -8,7 +8,6 @@ Transform your brand guidelines into AI context that generates perfectly consist
   <img src="https://raw.githubusercontent.com/JoshuaPaul20/Figment/main/packages/web/public/Figment.png" alt="Figment Logo" style="margin-bottom: 20px;" />
 </div>
 
-[![npm version](https://badge.fury.io/js/%40figmentdev%2Ffigment.svg)](https://badge.fury.io/js/%40figmentdev%2Ffigment)
 
 ## ✨ The Magic
 
@@ -30,23 +29,30 @@ You: ✨ *ships it*
 
 ## 🚀 Quick Start
 
-### One-Liner Setup
+### Quick Install from GitHub
 ```bash
-npm install -g @figmentdev/figment && figment init
+git clone https://github.com/JoshuaPaul20/Figment.git && cd Figment && npm install && npm run build && npm link packages/cli && figment init
 ```
 
-### Step-by-Step
+### Step-by-Step Installation
 ```bash
-# 1. Install globally  
-npm install -g @figmentdev/figment
+# 1. Clone and install
+git clone https://github.com/JoshuaPaul20/Figment.git
+cd Figment
+npm install
+npm run build
 
-# 2. Set up your brand
+# 2. Link CLI globally
+cd packages/cli  
+npm link
+
+# 3. Set up your brand
 figment init
 
-# 3. Configure your AI tool
+# 4. Configure your AI tool
 figment configure-claude  # or configure-gemini
 
-# 4. Start coding with brand-aware AI! 🎉
+# 5. Start coding with brand-aware AI! 🎉
 ```
 
 ## 🎯 Who This Is For
@@ -281,8 +287,9 @@ We'd love your help making Figment better!
 - 🔧 [Pull Requests](https://github.com/JoshuaPaul20/Figment/pulls) - Code contributions
 
 ### Roadmap
+- [ ] **npm package** - `npm install -g @figmentdev/figment` (coming soon!)
 - [ ] Figma plugin for direct import
-- [ ] More framework support (Svelte, Angular)
+- [ ] More framework support (Svelte, Angular)  
 - [ ] Advanced component pattern matching  
 - [ ] Team collaboration features
 - [ ] Design system analytics
