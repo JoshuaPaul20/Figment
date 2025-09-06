@@ -33,7 +33,7 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": ["mcp", "design-system", "ai", "brand-guide", "claude"],
-  "author": "Your Name",
+  "author": "Joshua Paul",
   "license": "MIT",
   "dependencies": {
     

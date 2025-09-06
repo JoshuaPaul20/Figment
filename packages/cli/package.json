@@ -27,7 +27,8 @@
     "lint": "eslint src/**/*.ts",
     "test": "cd ../.. && node scripts/test-e2e.js"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "author": "Joshua Paul",
   "dependencies": {
     "commander": "^12.0.0",
     "inquirer": "^10.0.0",
