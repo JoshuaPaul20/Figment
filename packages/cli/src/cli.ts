@@ -7,9 +7,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import os from 'os'; // Added os import
 
-// Import from core package using path alias
-import { BrandContextManager } from '@figment/core/brand-context';
-import type { BrandContext } from '@figment/core/types';
+// Import from sdk package
+import { BrandContextManager } from '@figmentdev/sdk/brand-context';
+import type { BrandContext } from '@figmentdev/sdk/types';
 
 const program = new Command();
 
@@ -350,13 +350,11 @@ program
   .description('Start the MCP server (used by AI tools)')
   .action(async () => {
     try {
-      // Import and start the MCP server from core package
-      const { FigmentMCPServer } = await import('@figment/core/server');
-      const server = new FigmentMCPServer();
-      await server.start();
+      // Import and start the MCP server from the mcp package
+      await import('@figmentdev/mcp');
     } catch (error) {
       console.error('Failed to start MCP server:', error);
-      console.error('Make sure the core package is built first: npm run build --workspace=packages/core');
+      console.error('Make sure all packages are built first: npm run build');
       process.exit(1);
     }
   });

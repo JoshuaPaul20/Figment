@@ -8,7 +8,7 @@ import TypographyPicker from '../components/TypographyPicker';
 import ComponentPreview from '../components/ComponentPreview';
 import type { BrandColors } from '../components/ColorPicker';
 import type { TypographyConfig } from '../components/TypographyPicker';
-import type { ComponentPatternSchema } from 'figment-mcp/types';
+import type { ComponentPatternSchema } from '@figmentdev/sdk/types';
 import { z } from 'zod';
 import { Figma } from 'lucide-react'; // Added Figma import
 import { getContrastColor } from '../utils/colors';

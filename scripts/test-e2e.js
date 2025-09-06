@@ -49,7 +49,13 @@ if (statusOutput && statusOutput.includes('Test Brand')) {
 }
 
 // Test 4: Check that all required files exist
-const requiredFiles = ['packages/cli/dist/cli.js', 'packages/core/dist/server.js', 'packages/core/dist/brand-context.js', 'packages/core/dist/types.js'];
+const requiredFiles = [
+  'packages/cli/dist/cli.js',
+  'packages/sdk/dist/index.js',
+  'packages/sdk/dist/brand-context.js',
+  'packages/sdk/dist/types.js',
+  'packages/mcp/dist/index.js'
+];
 let allFilesExist = true;
 
 requiredFiles.forEach(file => {

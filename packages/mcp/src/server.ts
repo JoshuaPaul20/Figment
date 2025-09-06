@@ -1,5 +1,4 @@
-import { fileURLToPath } from 'url';
-import path from 'path';
+// Removed unused imports
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
@@ -8,8 +7,8 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import { BrandContextManager } from './brand-context.js';
-import { FigmentTool } from './types.js';
+import { BrandContextManager } from '@figmentdev/sdk/brand-context';
+import type { FigmentTool } from '@figmentdev/sdk/types';
 
 class FigmentMCPServer {
   private server: Server;
@@ -24,8 +23,109 @@ class FigmentMCPServer {
       },
       {
         capabilities: {
-          resources: {},
-          tools: {},
+          resources: {
+            'figment://brand-guidelines': {
+              uri: 'figment://brand-guidelines',
+              name: 'Brand Guidelines',
+              description: 'Complete brand guidelines and component patterns for AI code generation',
+              access: ['read'],
+              mimeType: 'text/markdown',
+            },
+            'figment://css-variables': {
+              uri: 'figment://css-variables',
+              name: 'CSS Custom Properties',
+              description: 'CSS custom properties generated from brand context',
+              access: ['read'],
+              mimeType: 'text/css',
+            },
+            'figment://brand-context': {
+              uri: 'figment://brand-context',
+              name: 'Brand Context JSON',
+              description: 'Raw brand context data in JSON format',
+              access: ['read'],
+              mimeType: 'application/json',
+            },
+          },
+          tools: {
+            get_brand_colors: {
+              name: 'get_brand_colors',
+              description: 'Get brand colors for use in components',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  format: {
+                    type: 'string',
+                    enum: ['hex', 'rgb', 'hsl', 'css-var'],
+                    description: 'Color format to return',
+                    default: 'hex'
+                  }
+                }
+              }
+            },
+            get_component_pattern: {
+              name: 'get_component_pattern',
+              description: 'Get CSS classes or styles for a specific component type',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  component: {
+                    type: 'string',
+                    enum: ['button', 'input', 'card', 'modal'],
+                    description: 'Component type to get pattern for'
+                  },
+                  variant: {
+                    type: 'string',
+                    description: 'Component variant (e.g., primary, secondary, outline)',
+                    default: 'default'
+                  }
+                },
+                required: ['component']
+              }
+            },
+            validate_design_compliance: {
+              name: 'validate_design_compliance',
+              description: 'Validate if provided CSS or component follows brand guidelines',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  css: {
+                    type: 'string',
+                    description: 'CSS code to validate against brand guidelines'
+                  },
+                  component: {
+                    type: 'string',
+                    description: 'Component type being validated'
+                  }
+                },
+                required: ['css']
+              }
+            },
+            generate_component_code: {
+              name: 'generate_component_code',
+              description: 'Generate React/HTML component code following brand guidelines',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  component: {
+                    type: 'string',
+                    description: 'Type of component to generate'
+                  },
+                  framework: {
+                    type: 'string',
+                    enum: ['react', 'vue', 'html', 'svelte'],
+                    description: 'Framework to generate code for',
+                    default: 'react'
+                  },
+                  props: {
+                    type: 'object',
+                    description: 'Component properties and content',
+                    default: {}
+                  }
+                },
+                required: ['component']
+              }
+            }
+          },
         },
       }
     );
@@ -472,8 +572,6 @@ export const Button: React.FC<ButtonProps> = ({
     }
 
     // Suppress stdout logging to avoid corrupting JSON-RPC messages
-    const originalLog = console.log;
-    const originalWarn = console.warn;
 
     console.log = (...args) => console.error('[LOG]', ...args);
     console.warn = (...args) => console.error('[WARN]', ...args);
@@ -486,19 +584,12 @@ export const Button: React.FC<ButtonProps> = ({
   }
 }
 
-// Start the server - ES module compatible check
-const isMainModule = (url: string, argv: string[]) => {
-  const scriptPath = fileURLToPath(url);
-  const mainScript = path.resolve(argv[1] || '');
-  return scriptPath === mainScript;
-};
+export { FigmentMCPServer };
 
-if (import.meta.url && isMainModule(import.meta.url, process.argv)) {
+export async function startMcpServer() {
   const server = new FigmentMCPServer();
-  server.start().catch(error => {
+  await server.start().catch(error => {
     console.error('Server failed to start:', error);
     process.exit(1);
   });
 }
-
-export { FigmentMCPServer };

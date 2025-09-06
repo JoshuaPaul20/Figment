@@ -3,7 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     index: 'src/index.ts',
-    server: 'src/server.ts',
+    
     'brand-context': 'src/brand-context.ts',
     types: 'src/types.ts'
   },

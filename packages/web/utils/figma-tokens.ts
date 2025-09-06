@@ -1,4 +1,4 @@
-import type { Colors, Typography, ComponentPatterns } from 'figment-mcp/types';
+import type { Colors, Typography, ComponentPatterns } from '@figmentdev/sdk/types';
 
 // A simplified type for the Figma tokens JSON structure
 interface FigmaToken {

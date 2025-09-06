@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import type { TypographyConfig } from './TypographyPicker';
-import type { ComponentPatterns, InputStates, CardVariants } from 'figment-mcp/types';
+import type { ComponentPatterns, InputStates, CardVariants } from '@figmentdev/sdk/types';
 import { getContrastColor } from '../utils/colors';
 
 interface ComponentPreviewProps {

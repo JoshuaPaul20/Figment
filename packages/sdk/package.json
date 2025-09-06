@@ -1,19 +1,16 @@
 {
-  "name": "@figment/core",
+  "name": "@figmentdev/sdk",
   "version": "0.1.0",
-  "description": "MCP server for brand-aware AI code generation",
+  "description": "Core SDK for brand-aware AI code generation",
   "type": "module",
-  "main": "dist/server.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./server": {
-      "import": "./dist/server.js",
-      "types": "./dist/server.d.ts"
-    },
+    
     "./brand-context": {
       "import": "./dist/brand-context.js",
       "types": "./dist/brand-context.d.ts"
@@ -29,8 +26,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "start": "node dist/server.js",
-    "test": "vitest run",
+    
+    "test": "echo \"No tests for sdk package yet\"",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts",
     "prepublishOnly": "npm run build"
@@ -39,7 +36,7 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.0",
+    
     "cosmiconfig": "^9.0.0",
     "gray-matter": "^4.0.3"
   },

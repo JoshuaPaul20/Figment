@@ -7,8 +7,9 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build:core && npm run build:cli && npm run build:web",
-    "build:core": "npm run build -w packages/core",
+    "build": "npm run build:sdk && npm run build:mcp && npm run build:cli && npm run build:web",
+    "build:sdk": "npm run build -w packages/sdk",
+    "build:mcp": "npm run build -w packages/mcp",
     "build:cli": "npm run build -w packages/cli", 
     "build:web": "npm run build -w packages/web",
     "dev": "npm run dev --workspaces",
@@ -16,7 +17,7 @@
     "test:e2e": "node scripts/test-e2e.js",
     "lint": "npm run lint --workspaces",
     "clean": "rimraf packages/*/dist packages/*/.next node_modules packages/*/node_modules",
-    "figment": "node packages/cli/dist/cli.js"
+    "cli": "node packages/cli/dist/cli.js"
   },
   "keywords": [
     "mcp",

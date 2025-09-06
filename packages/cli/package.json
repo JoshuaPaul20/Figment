@@ -1,5 +1,5 @@
 {
-  "name": "@figmentdev/figment",
+  "name": "@figmentdev/cli",
   "version": "0.1.0",
   "description": "Brand-aware AI code generation CLI",
   "type": "module",
@@ -38,7 +38,8 @@
     "@modelcontextprotocol/sdk": "^1.17.0",
     "cosmiconfig": "^9.0.0",
     "open": "^10.0.0",
-    "@figment/core": "0.1.0"
+    "@figmentdev/sdk": "0.1.0",
+    "@figmentdev/mcp": "0.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

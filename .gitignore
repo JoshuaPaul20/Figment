@@ -95,3 +95,6 @@ claude_desktop_config.json
 # Editor-specific files
 .vscode/settings.json
 .idea/workspace.xml
+
+# Local AI tool configurations
+.claude/

@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But re-include the important parts
+!dist/
+!package.json
+!README.md
+!LICENSE

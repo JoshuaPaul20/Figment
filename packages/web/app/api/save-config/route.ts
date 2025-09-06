@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { BrandContextManager } from 'figment-mcp/brand-context';
-import { BrandContextSchema } from 'figment-mcp/types';
+import { BrandContextManager } from '@figmentdev/sdk/brand-context';
+import { BrandContextSchema } from '@figmentdev/sdk/types';
 import { z } from 'zod';
 
 export async function POST(request: Request) {
