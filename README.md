@@ -190,8 +190,10 @@ Developers can then use this config file in their AI coding workflow!
 
 ## 💡 How Figment Works
 
-Figment creates a **Model Context Protocol (MCP) server** that your AI tools connect to. This gives them direct access to:
+Figment creates a **Model Context Protocol (MCP) server** that your AI tools connect to. The architecture includes:
 
+- 🧰 **SDK**: Core brand context management, validation, and CSS generation
+- 🔌 **MCP Server**: Provides AI tools direct access to your brand data
 - 🎨 Your brand colors, typography, and spacing
 - 📐 Component patterns and design tokens  
 - ✅ Validation rules for design compliance
@@ -201,7 +203,8 @@ Figment creates a **Model Context Protocol (MCP) server** that your AI tools con
 
 Figment is structured as a **local application suite**:
 
-- **`packages/core`**: MCP server and brand logic engine
+- **`packages/sdk`**: Brand context management and validation engine
+- **`packages/mcp`**: Model Context Protocol server for AI integration
 - **`packages/cli`**: Command-line interface for developers  
 - **`packages/web`**: Visual brand editor for designers
 
@@ -299,9 +302,10 @@ figment init
 ```
 Figment/
 ├── packages/
-│   ├── cli/           # Command-line interface (@figmentdev/figment)
-│   ├── core/          # MCP server and brand logic  
-│   └── web/           # Visual brand editor (Next.js)
+│   ├── sdk/           # Brand context SDK (@figmentdev/sdk)
+│   ├── mcp/           # MCP server (@figmentdev/mcp)
+│   ├── cli/           # Command-line interface (@figmentdev/cli)
+│   └── web/           # Visual brand editor (@figmentdev/figment-web)
 ├── examples/          # Example brand configurations
 └── docs/             # Documentation and guides
 ```
@@ -346,7 +350,7 @@ We'd love your help making Figment better!
 - 🔧 [Pull Requests](https://github.com/JoshuaPaul20/Figment/pulls) - Code contributions
 
 ### Roadmap
-- [ ] **npm package** - `npm install -g @figmentdev/figment` (coming soon!)
+- [ ] **npm package** - `npm install -g @figmentdev/cli` (coming soon!)
 - [ ] Figma plugin for direct import
 - [ ] More framework support (Svelte, Angular)  
 - [ ] Advanced component pattern matching  
